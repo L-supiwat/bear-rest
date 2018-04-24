@@ -6,4 +6,13 @@ export function fetchBear(){
         dispatch({type: 'FETCH_BEAR', payload: result.data})
       })
     }
-  }
+}
+
+export function deleteBear(id) {
+    return (dispatch) => {
+        axios.delete(`http://localhost:8000/api/bears/${id}`)
+        .then(() => {
+            dispatch(fetchBear())
+        })
+    }
+}
