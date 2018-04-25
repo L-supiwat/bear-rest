@@ -8,6 +8,7 @@ var bears = [
     { id: '1', name: 'Ple' },
     { id: '2', name: 'Tum' }
 ]; 
+var last_bear_id = 3;
   
 router.route('/bears') 
     .get(function(req, res) {
@@ -16,6 +17,7 @@ router.route('/bears')
     .post(function(req, res) { 
         var bear = {}; 
         bear.name = req.body.name; 
+        bear.id = "" + (last_bear_id++);
         bears.push(bear); 
         res.json({ message: 'Bear created!' }); 
     })
